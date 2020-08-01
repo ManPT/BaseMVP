@@ -14,7 +14,7 @@ import android.view.ViewGroup
  * BaseFragment
  * 集成fragment的添加与移除
  */
-abstract class BaseFragment : Fragment() {
+open abstract class BaseFragment : Fragment() {
 
     protected var mActivity: BaseFragmentActivity? = null
     protected var TAG: String? = ""
@@ -29,10 +29,6 @@ abstract class BaseFragment : Fragment() {
      */
     abstract fun initView()
 
-    /**
-     * 初始化view监听
-     */
-    abstract fun addListener()
 
     /**
      * 获取传值
@@ -69,7 +65,6 @@ abstract class BaseFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initView()
-        addListener()
         if (arguments != null) {
             getIntentData(arguments)
         }

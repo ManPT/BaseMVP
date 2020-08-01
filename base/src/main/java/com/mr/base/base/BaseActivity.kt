@@ -10,7 +10,7 @@ import com.lib.tools.ActivityManagerTool
 import com.lib.tools.DataTool
 import com.lib.tools.LogTool
 
-abstract class BaseActivity : AppCompatActivity() {
+open abstract class BaseActivity : AppCompatActivity() {
 
     var TAG: String? = ""
     public lateinit var mContext:Context

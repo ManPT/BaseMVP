@@ -3,7 +3,7 @@ package com.lib.base
 import androidx.fragment.app.FragmentTransaction
 
 
-abstract class BaseFragmentActivity : BaseActivity() {
+open abstract class BaseFragmentActivity : BaseActivity() {
 
     /**
      * 获取承载Fragment的View

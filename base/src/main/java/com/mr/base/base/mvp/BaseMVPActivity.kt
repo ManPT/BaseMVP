@@ -3,7 +3,7 @@ package com.lib.base.mvp
 import com.lib.base.BaseActivity
 import com.lib.tools.ClassTool
 
-abstract class BaseMVPActivity<IView : BaseView, Mode : BaseMode<Presenter,IView>, Presenter : BasePresenter<IView>> :
+open abstract class BaseMVPActivity<IView : BaseView, Mode : BaseMode<Presenter,IView>, Presenter : BasePresenter<IView>> :
     BaseActivity() {
     var baseMode: Mode? = null
     var mPresenter: Presenter? = null
