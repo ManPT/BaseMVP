@@ -46,4 +46,5 @@ dependencies {
     api 'io.reactivex.rxjava2:rxjava:+'
     api 'io.reactivex.rxjava2:rxandroid:+'
     api 'com.squareup.retrofit2:adapter-rxjava2:+'
+
 }

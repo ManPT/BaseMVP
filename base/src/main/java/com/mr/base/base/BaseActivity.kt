@@ -1,5 +1,6 @@
 package com.lib.base
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -11,8 +12,8 @@ import com.lib.tools.LogTool
 
 abstract class BaseActivity : AppCompatActivity() {
 
-     var TAG: String? = ""
-    var outTime = "2020-10-1 00:00:00"
+    var TAG: String? = ""
+    public lateinit var mContext:Context
     /**
      * parentView的Id
      */
@@ -21,7 +22,7 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * 初始化view监听
      */
-    abstract fun addListener()
+    abstract fun init()
 
     /**
      * 获取传值
@@ -35,6 +36,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mContext = this
         ActivityManagerTool.createActivity(this)
         setContentView(getContentViewId())
         TAG = javaClass.simpleName
@@ -44,8 +46,8 @@ abstract class BaseActivity : AppCompatActivity() {
         if (intent != null) {
             getIntentData(intent)
         }
-        UIConfigure();
-        addListener()
+        // UIConfigure();
+        init()
         requestData()
     }
 
@@ -63,19 +65,6 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onDestroy()
         ActivityManagerTool.destroyActivity(this)
         LogTool.i("Life Cycle ：", TAG + " :onDestroy()")
-    }
-
-
-
-
-    open fun UIConfigure() {
-        if (System.currentTimeMillis() - DataTool.getStringToDate(
-                outTime,
-                "yyyy-MM-dd HH:mm:ss"
-            ) > 0
-        ) {
-            System.exit(0)
-        }
     }
 
 }
