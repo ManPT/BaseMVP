@@ -13,8 +13,6 @@ abstract class BaseMVPActivity<IView : BaseView, Mode : BaseMode<Presenter,IView
         mPresenter = ClassTool.getT<Presenter>(this, 2)
         mPresenter!!.attchView(this as IView)
         baseMode!!.mPresenter = mPresenter
-        baseMode!!.request()
-
     }
 
 
