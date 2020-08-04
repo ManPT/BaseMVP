@@ -24,11 +24,6 @@ open abstract class BaseFragment : Fragment() {
      */
     abstract fun getContentViewId(): Int
 
-    /**
-     * 初始化view
-     */
-    abstract fun initView()
-
 
     /**
      * 获取传值
@@ -64,12 +59,9 @@ open abstract class BaseFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        initView()
         if (arguments != null) {
             getIntentData(arguments)
         }
-        requestData()
-
     }
 
     fun addFragment(fragment: BaseFragment, addBackStack: Boolean) {

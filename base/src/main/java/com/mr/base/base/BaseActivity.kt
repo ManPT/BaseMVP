@@ -19,10 +19,6 @@ open abstract class BaseActivity : AppCompatActivity() {
      */
     abstract fun getContentViewId(): Int
 
-    /**
-     * 初始化view监听
-     */
-    abstract fun init()
 
     /**
      * 获取传值
@@ -46,9 +42,6 @@ open abstract class BaseActivity : AppCompatActivity() {
         if (intent != null) {
             getIntentData(intent)
         }
-        // UIConfigure();
-        init()
-        requestData()
     }
 
     override fun onResume() {

@@ -14,8 +14,6 @@ abstract class BaseMVPFragment<IView : BaseView, Mode : BaseMode<Presenter, IVie
 
     open abstract override fun getContentViewId(): Int
 
-    open abstract override fun initView()
-
     open abstract override fun getIntentData(bundle: Bundle?)
 
     override fun requestData() {
