@@ -3,7 +3,8 @@ package com.lib.net
 class BaseResponse<T> {
     private var code = 0
     private var data:T? = null
-    private var msg:String = ""
+    private var errorMessage:String = ""
+    private var timestamp : Long = 0
 
     public fun getCode():Int{
         return code;
@@ -14,7 +15,10 @@ class BaseResponse<T> {
     }
 
     public fun getMsg():String{
-        return msg;
+        return errorMessage;
     }
 
+    fun getTimeStamp():Long{
+        return timestamp
+    }
 }

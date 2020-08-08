@@ -1,5 +1,6 @@
 package com.lib.base.mvp
 
+import android.text.TextUtils
 import java.lang.ref.Reference
 import java.lang.ref.WeakReference
 
@@ -15,7 +16,7 @@ open abstract class BasePresenter<IView :BaseView> {
         mViewRef = WeakReference<IView>(view)
     }
 
-    /**
+    /**+
      * 解除当前presenter依赖view关系
      */
     open fun detachView() {
@@ -30,11 +31,17 @@ open abstract class BasePresenter<IView :BaseView> {
      *
      * @return
      */
-    protected val view: IView?
+    protected val mView: IView?
         protected get() = if (mViewRef == null) {
             null
         } else mViewRef!!.get()
 
-
+    fun onError(error:String?){
+        if (!TextUtils.isEmpty(error)){
+            mView!!.toast(error!!)
+        }else{
+            mView!!.toast("error!!")
+        }
+    }
 
 }

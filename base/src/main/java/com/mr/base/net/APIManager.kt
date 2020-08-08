@@ -6,6 +6,8 @@ import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
@@ -32,9 +34,11 @@ object APIManager {
                 }
 
                 override fun onNext(result: BaseResponse<T>) {
-                    if (result.getCode() == 0) {
+                    if (listener.successCondition(result)){
                         listener.onSuccess(result.getData())
                         listener.onSuccess(result.getData(), result.getMsg())
+                    }else{
+                        listener.onError(Exception("返回的Code不正确  code = " + result.getCode()))
                     }
                 }
 
@@ -53,4 +57,10 @@ object APIManager {
             })
 
     }
+
+    fun getRequestBody(json: String?): RequestBody? {
+        return RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), json)
+    }
+
+
 }

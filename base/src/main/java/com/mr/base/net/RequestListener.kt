@@ -1,5 +1,7 @@
 package com.mr.base.net
 
+import com.lib.net.BaseResponse
+
 interface RequestListener<E> {
     fun onStart()
 
@@ -12,4 +14,8 @@ interface RequestListener<E> {
     fun onError(e: Throwable?, businessCode: String?) {}
 
     fun onComplete()
+
+    fun successCondition(result: BaseResponse<E>):Boolean{
+        return  result.getCode() == 200
+    }
 }

@@ -5,6 +5,7 @@
 继承自 AppCompatActivity，集成了一下功能：
 1. 生命周期的检测
 2. 使用ActivityManagerTool 管理Activity
+3.封装了TitleBar的使用： setTitle（） 和 setLeftBlack() 等方法
 
 ## BaseFragmentActivity
 主要功能如下:

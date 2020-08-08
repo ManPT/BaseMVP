@@ -1,20 +1,21 @@
 package com.lib.base.mvp
 
+import android.os.Bundle
 import com.lib.base.BaseActivity
 import com.lib.tools.ClassTool
 
 open abstract class BaseMVPActivity<IView : BaseView, Mode : BaseMode<Presenter,IView>, Presenter : BasePresenter<IView>> :
     BaseActivity() {
-    var baseMode: Mode? = null
+    var mMode: Mode? = null
     var mPresenter: Presenter? = null
 
-    override fun requestData() {
-        baseMode = ClassTool.getT<Mode>(this, 1)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mMode = ClassTool.getT<Mode>(this, 1)
         mPresenter = ClassTool.getT<Presenter>(this, 2)
         mPresenter!!.attchView(this as IView)
-        baseMode!!.mPresenter = mPresenter
+        mMode!!.mPresenter = mPresenter
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
