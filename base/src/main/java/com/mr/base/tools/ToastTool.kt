@@ -5,6 +5,22 @@ import android.widget.Toast
 object ToastTool {
     var mToast: Toast? = null
 
+
+    fun showToast(text: CharSequence) {
+        cancelToast()
+        if (mToast == null) {
+            mToast =
+                Toast.makeText(Tool.mContext, text, Toast.LENGTH_SHORT)
+        } else {
+            mToast!!.setText(text)
+            mToast!!.duration = Toast.LENGTH_SHORT
+        }
+
+        mToast!!.show()
+    }
+
+
+
     fun showToast(text: CharSequence, duration: Int) {
         cancelToast()
         if (mToast == null) {

@@ -6,6 +6,7 @@ import android.view.KeyCharacterMap
 import android.view.KeyEvent
 import android.view.ViewConfiguration
 import android.view.WindowManager
+import com.mr.base.tools.Tool
 
 /**
  * 屏幕工具
@@ -78,8 +79,8 @@ object ScreenTool {
      * @param dpValue
      * @return
      */
-    fun dip2px(context: Context, dpValue: Float): Int {
-        val scale = context.resources.displayMetrics.density
+    fun dip2px( dpValue: Float): Int {
+        val scale = Tool.mContext!!.resources.displayMetrics.density
         return (dpValue * scale + 0.5f).toInt()
     }
 

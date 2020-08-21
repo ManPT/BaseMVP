@@ -47,7 +47,6 @@ open abstract class BaseActivity : AppCompatActivity() {
         layoutInflater.inflate(getContentViewId(), baseContentLayout, true)
         TAG = javaClass.simpleName
         LogTool.i("Life Cycle ：", TAG + " :onCreate()")
-        setContentView(getContentViewId())
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         if (intent != null) {
             getIntentData(intent)
@@ -76,7 +75,6 @@ open abstract class BaseActivity : AppCompatActivity() {
      *
      */
     protected fun setStatusBar(dark : Boolean) {
-
         //StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window: Window = window
@@ -111,6 +109,10 @@ open abstract class BaseActivity : AppCompatActivity() {
             decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE)
         }
 
+    }
+
+    protected fun setStatusBarVisable(open:Boolean){
+        headerLayout.setVisiableStatusBar(open)
     }
 
     override fun setTitle(title: CharSequence?) {

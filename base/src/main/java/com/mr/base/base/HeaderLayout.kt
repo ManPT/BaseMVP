@@ -113,4 +113,13 @@ class HeaderLayout : LinearLayout {
         headerTitleTv.setText(charSequence)
         show()
     }
+
+    fun setVisiableStatusBar(open :Boolean){
+        if (open){
+            statusBar.visibility =  View.VISIBLE
+        }else{
+            statusBar.visibility =  View.GONE
+        }
+
+    }
 }

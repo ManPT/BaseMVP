@@ -5,7 +5,7 @@ import com.mr.base.tools.ToastTool
 
 abstract interface BaseView {
 
-    fun toast(message:String){
+    fun error(message:String){
         ToastTool.showToast(message,Toast.LENGTH_SHORT)
     }
 

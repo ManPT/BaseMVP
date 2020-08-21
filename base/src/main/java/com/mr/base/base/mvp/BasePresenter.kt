@@ -38,9 +38,9 @@ open abstract class BasePresenter<IView :BaseView> {
 
     fun onError(error:String?){
         if (!TextUtils.isEmpty(error)){
-            mView!!.toast(error!!)
+            mView!!.error(error!!)
         }else{
-            mView!!.toast("error!!")
+            mView!!.error("error!!")
         }
     }
 
